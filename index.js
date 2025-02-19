@@ -1,3 +1,4 @@
+console.log((1 >= NaN)||(1 <= NaN));
 void (async function Index() {
   let { zwriteFileSync, zreadFileSync } = await import("./zfs.mjs");
 

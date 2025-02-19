@@ -3304,7 +3304,7 @@
                 continue;
             }
             if (_typeof(source) !== 'object') {
-                console.warn(new TypeError(source + 'must be non-object'),...arguments);
+                throw new TypeError(source + 'must be non-object');
             }
             for (var p in source) {
                 if (_has(source, p)) {
@@ -3696,7 +3696,7 @@
         this.strm.avail_out = 0;
         var status = deflate_1$2.deflateInit2(this.strm, opt.level, opt.method, opt.windowBits, opt.memLevel, opt.strategy);
         if (status !== Z_OK$2) {
-            console.warn(messages[status],...arguments);
+            throw new Error(messages[status]);
         }
         if (opt.header) {
             deflate_1$2.deflateSetHeader(this.strm, opt.header);
@@ -3714,7 +3714,7 @@
             }
             status = deflate_1$2.deflateSetDictionary(this.strm, dict);
             if (status !== Z_OK$2) {
-                console.warn(messages[status],...arguments);
+                throw new Error(messages[status]);
             }
             this._dict_set = true;
         }
@@ -3874,7 +3874,7 @@
 
         // That will never happens, if you don't cheat with options :)
         if (deflator.err) {
-            console.warn(deflator.msg || messages[deflator.err],...arguments);
+            throw deflator.msg || messages[deflator.err];
         }
         return deflator.result;
     }
@@ -6406,7 +6406,7 @@
         this.strm.avail_out = 0;
         var status = inflate_1$2.inflateInit2(this.strm, opt.windowBits);
         if (status !== Z_OK) {
-            console.warn(messages[status],...arguments);
+            throw new Error(messages[status]);
         }
         this.header = new gzheader();
         inflate_1$2.inflateGetHeader(this.strm, this.header);
@@ -6423,7 +6423,7 @@
                 //In raw mode we need to set the dictionary early
                 status = inflate_1$2.inflateSetDictionary(this.strm, opt.dictionary);
                 if (status !== Z_OK) {
-                     console.warn(messages[status],...arguments);
+                    throw new Error(messages[status]);
                 }
             }
         }
@@ -6618,7 +6618,7 @@
         inflator.push(input);
 
         // That will never happens, if you don't cheat with options :)
-        if (inflator.err) console.warn(inflator.msg || messages[inflator.err],...arguments);
+        if (inflator.err) throw inflator.msg || messages[inflator.err];
         return inflator.result;
     }
 
