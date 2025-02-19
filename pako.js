@@ -6675,7 +6675,7 @@
     var inflateRaw_1 = inflateRaw;
     var ungzip_1 = ungzip;
     var constants_1 = constants$2;
-    var pako = {
+    globalThis.pako = {
         Deflate: Deflate_1,
         deflate: deflate_1,
         deflateRaw: deflateRaw_1,
