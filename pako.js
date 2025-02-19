@@ -3,6 +3,7 @@
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
         typeof define === 'function' && define.amd ? define(['exports'], factory) :
         (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.pako = {}));
+        if(!global?.pako)(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.pako = {}));
 })(this, (function(exports) {
     'use strict';
 
@@ -6675,7 +6676,7 @@
     var inflateRaw_1 = inflateRaw;
     var ungzip_1 = ungzip;
     var constants_1 = constants$2;
-    globalThis.pako = {
+    var pako = {
         Deflate: Deflate_1,
         deflate: deflate_1,
         deflateRaw: deflateRaw_1,
