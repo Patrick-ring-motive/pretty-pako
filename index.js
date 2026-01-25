@@ -6,11 +6,11 @@ void (async function Index() {
   scriptText = scriptText
     .replace(
       /([$a-zA-Z_]+[$a-zA-Z0-9_]*)\s*=\s*function\s*\(/g,
-      "$1 = function $1(",
+      "$1 = function __dollar_sign__$1(",
     )
     .replace(
       /([$a-zA-Z_]+[$a-zA-Z0-9_]*)\s*:\s*function\s*\(/g,
-      "$1 : function $1(",
-    );
+      "$1 : function __dollar_sign__$1(",
+    ).replaceAll('__dollar_sign__','$');
   zwriteFileSync("./pretty-pako.js", scriptText);
 })();
